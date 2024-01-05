@@ -1,0 +1,31 @@
+<div class="wrapper">
+    <div class="d-flex justify-content-between my-2 mb-0 mx-4">
+        <app-go-back></app-go-back>    
+        <h3>Reembolso</h3>
+    </div>
+
+    <div class="payments">
+        <div class="payment-item" *ngFor="let p of [1,2,3]">
+            <h3 class="date">HOJE, 3 JANEIRO 2024</h3>
+            <div class="row h-headings mt-3">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-3">DESCRIPTIVO</div>
+                <div class="col-md-2 text-end">MONTANTE</div>
+                <div class="col-md-3 text-end">SALDO APÓS MOVIMENTO</div>
+                <div class="col-md-3 text-end">DATA VALOR</div>
+            </div>
+            <div class="row h-values mt-3">
+                <div class="col-md-1 text-center">
+                    <mat-icon class="example-tab-icon">home</mat-icon>
+                </div>
+                <div class="col-md-3">Pagamento</div>
+                <div class="col-md-2 text-end">KZ 120.000,34</div>
+                <div class="col-md-3 text-end">KZ 15.000.500,76</div>
+                <div class="col-md-3 text-end">29 Dez 2023</div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

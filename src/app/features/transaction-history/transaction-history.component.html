@@ -1,0 +1,41 @@
+<div class="wrapper">
+    <div class="d-flex justify-content-between my-2 mb-0 mx-4">
+        <app-go-back></app-go-back>
+        <h3>Historico de Transacoes</h3>
+    </div>
+
+    <div class="payments" *ngIf="payments && payments.length > 0">
+        <div class="payment-item" *ngFor="let paymentGroup of payments">
+            <h3 class="date">{{ paymentGroup.date }}</h3>
+
+            <div class="row h-headings mt-3">
+                <div class="col-md-1"></div>
+                <div class="col-md-3">DESCRIPTIVO</div>
+                <div class="col-md-2 text-end">MONTANTE</div>
+                <div class="col-md-3 text-end">SALDO APÓS MOVIMENTO</div>
+                <div class="col-md-3 text-end">DATA VALOR</div>
+            </div>
+
+            <div class="row h-values mb-1" *ngFor="let payment of paymentGroup.payments">
+                <div class="divider mb-3"></div>
+                <div class="col-md-1 text-center">
+                    <mat-icon class="example-tab-icon">{{ payment.icon }}</mat-icon>
+                </div>
+                <div class="col-md-3">{{ payment.descriptive }}</div>
+                <div class="col-md-2 text-end">{{ payment.amount }}</div>
+                <div class="col-md-3 text-end">{{ payment.balanceAfterMovement }}</div>
+                <div class="col-md-3 text-end">{{ payment.valueDate }}</div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!payments || payments.length === 0">
+        <p>Nenhum pagamento encontrado.</p>
+    </div>
+
+    <h1 class="text-end" *ngIf="isLoadingBalance">Processando...</h1>
+</div>
+
+<div class="spinner" *ngIf="isLoadingBalance">
+    <mat-spinner></mat-spinner>
+</div>

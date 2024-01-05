@@ -1,0 +1,25 @@
+.example-tab-icon {
+    margin-right: 8px;
+}
+
+.option {
+    background-color: blueviolet;
+    color: antiquewhite;
+    border-radius: 0.4rem;
+    margin: .5rem;
+    padding: .55rem 3rem;
+    font-size: .95rem;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.icon {
+    color: aqua;
+}
+
+a {
+    text-decoration: none;
+}

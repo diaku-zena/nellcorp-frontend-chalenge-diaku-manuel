@@ -1,0 +1,11 @@
+mat-form-field {
+    padding: 1rem;
+}
+
+.bolder {
+    font-weight: 600;
+}
+
+.confirm {
+    margin: 1.5rem;
+}

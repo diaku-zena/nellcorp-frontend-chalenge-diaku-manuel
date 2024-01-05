@@ -1,0 +1,86 @@
+<div class="wrapper">
+    <div class="withdrawal">
+        <div class="d-flex justify-content-between my-2 mb-0 mx-4">
+            <app-go-back></app-go-back>
+            <h3>Transferencia</h3>
+        </div>
+
+
+        <mat-stepper linear #stepper>
+            <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>IBAN do Beneficiario</ng-template>
+                    <mat-form-field floatLabel="always">
+                        <mat-label>Numero de IBAN</mat-label>
+                        <input matInput formControlName="first0Ctrl" type="number" class="example-right-align"
+                            placeholder="0" required />
+                        <mat-error *ngIf="firstFormGroup.get('first0Ctrl')?.hasError('required')">
+                            O campo é obrigatório.
+                        </mat-error>
+                        <mat-error *ngIf="firstFormGroup.get('first0Ctrl')?.hasError('pattern')">
+                            O IBAN deve conter 20 digitos
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field floatLabel="always">
+                        <mat-label>Quantidade a Transferir</mat-label>
+                        <input matInput formControlName="firstCtrl" type="number" class="example-right-align"
+                            placeholder="0" required />
+                        <span matTextPrefix>KZ&nbsp;</span>
+                        <span matTextSuffix>.00</span>
+                        <mat-error *ngIf="firstFormGroup.get('firstCtrl')?.hasError('required')">
+                            O campo é obrigatório.
+                        </mat-error>
+                        <mat-error *ngIf="firstFormGroup.get('firstCtrl')?.hasError('min')">
+                            O valor mínimo é 100.
+                        </mat-error>
+                        <mat-error *ngIf="firstFormGroup.get('firstCtrl')?.hasError('max')">
+                            O valor máximo é 10.000.000.
+                        </mat-error>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperNext>Próximo</button>
+                    </div>
+                </form>
+
+
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Confirmação</ng-template>
+                    <div class="confirm">
+                        <p>
+                            Confirma a transferencia de: 
+                            <span class="bolder">{{ firstFormGroup.get('firstCtrl')?.value}}</span> KZ
+                        </p>
+                        <p>Para: <span class="bolder">{{ firstFormGroup.get('first0Ctrl')?.value}}</span></p>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Insira o codigo</mat-label>
+                        <input matInput type="number" formControlName="secondCtrl" placeholder="Codigo" required>
+                    </mat-form-field>
+                    <div>
+                        <button mat-button matStepperPrevious>Voltar</button>
+                        <button mat-button matStepperNext>Próximo</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Concluído</ng-template>
+                <div class="alert alert-success">
+                    <p>O seu pedido foi processado com sucesso.</p>
+                </div>
+                <div>
+                    <a routerLink="/home" mat-button>
+                        <button mat-flat-button color="primary">
+                            Voltar Inicio
+                        </button>
+                    </a>
+                    <!-- <button mat-button matStepperPrevious>Okay</button> -->
+                    <!-- <button mat-button (click)="stepper.reset()">Resetar</button> -->
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </div>
+
+</div>
